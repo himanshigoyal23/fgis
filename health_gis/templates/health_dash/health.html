@@ -2569,7 +2569,6 @@ function querybufBif(currentPos) {
                                 onEachFeature: onEachFeatureForPoint,
                             }).addTo(mymap);
                             legend.addTo(mymap);
-                            legend_value='wfsfac';
                             activatedHealthFacility[facility] = healthFacility;
                         });
 
@@ -2835,11 +2834,10 @@ function querybufBif(currentPos) {
 
            
            var legend = L.control({position: 'bottomright'});
-                  console.log(legend_value);
+                
                 legend.onAdd = function (mymap) {
 
-                        console.log("facilityforlegend",activatedHealthFacility);
-                        console.log(legend_value);
+                        
                           var div = L.DomUtil.create('div', 'info legend'),
                           labels = ['<strong>Legends for all Facilities</strong>'],
                           categories = ['CHC','PHC','Alternate Hospital','Allopathy Hospital','Dedicated COVID Hospitals','Dedicated Health Centers','Dedicated COVID Centers','Government Schools','Aided Schools','ITI','Bifocals'];
