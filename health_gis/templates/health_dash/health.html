@@ -901,6 +901,7 @@
                     else if (fac == '{DCCC}')
                         removeWFSfac("DCCC");
                 };
+                
             }
 
             function toggleKoboFacility(clickedCheckBox) {
@@ -944,12 +945,9 @@
             };
 
             function removeWFSfac(facility) {
-                console.log("listcurrent",activatedHealthFacility);
                 mymap.removeLayer(activatedHealthFacility[facility]);
                 remove(facility);
-              console.log("after removing",activatedHealthFacility);
-
-                
+                legend.update();
             };
 
             function remove(facility) {
@@ -1830,6 +1828,7 @@ function querybufBif(currentPos) {
                             
                             LayerList.push(healthFacility);
                             activatedHealthFacility[facility] = healthFacility;
+                            legend.update();
                         });
 
 
@@ -2446,7 +2445,7 @@ function querybufBif(currentPos) {
                 else if (facility == 'bif')
                     newurl = url6 + `&cql_filter=district='Ahmednagar'`;
 
-
+                    
                 tableurl = newurl;
 
                 function onEachFeatureForPoint(feature, layer) {
@@ -2570,6 +2569,7 @@ function querybufBif(currentPos) {
                             }).addTo(mymap);
                             legend.addTo(mymap);
                             activatedHealthFacility[facility] = healthFacility;
+                            legend.update();
                         });
 
 
@@ -2836,94 +2836,26 @@ function querybufBif(currentPos) {
            var legend = L.control({position: 'bottomright'});
                 
                 legend.onAdd = function (mymap) {
-
-                        
-                          var div = L.DomUtil.create('div', 'info legend'),
-                          labels = ['<strong>Legends for all Facilities</strong>'],
-                          categories = ['CHC','PHC','Alternate Hospital','Allopathy Hospital','Dedicated COVID Hospitals','Dedicated Health Centers','Dedicated COVID Centers','Government Schools','Aided Schools','ITI','Bifocals'];
-                          colors=['#ff4800','#0004ff','#143d5e','#a8325a','#fa4646','#a8fc0d','#fc0de8','#00fa70','#825187','#f0cd07','#db0f1a']
-                             
-                         
-                          for (var i = 0; i < categories.length; i++) {
-                              div.innerHTML +=
-                                  labels.push(
-                                    '<i class="circle" style="background:'+ colors[i] +';opacity:1;">&nbsp;&nbsp;&nbsp;&nbsp;</i> ' +
-                                  categories[i]+'<br>')
-
-
-                          }
-                          div.innerHTML = labels.join('<br>');
-
-                          return div;
+                          this._div = L.DomUtil.create('div', 'info legend'),
+                          this.update();
+                          return this._div;
                   
                 };
-//trial for customized legends
-           // var legend = L.control({position: 'bottomright'});
-                  
-           //      legend.onAdd = function (mymap) {
 
-                        
-           //                var div = L.DomUtil.create('div', 'info legend'),
-           //                labels_census = ['<strong>Census Health Facilities</strong>'];
-           //                labels_covid = ['<strong>Dedicated COVID Health Facilities</strong>'];
-           //                labels_edu = ['<strong>Education & Skill Facilities</strong>'];
-           //                categories_census = ['CHC','PHC','Alternate Hospital','Allopathy Hospital'];
-           //                categories_covid=['Dedicated COVID Hospitals','Dedicated Health Centers','Dedicated COVID Centers'];
-           //                categories_edu=['Government Schools','Aided Schools','ITI','Bifoculs'];
-           //                colors_census=['#ff4800','#0004ff','#143d5e','#a8325a'];
-           //                colors_covid=['#fa4646','#a8fc0d','#fc0de8'];
-           //                colors_edu=['#00fa70','#825187','#f0cd07','#db0f1a'];
-                             
-           //                let legend_k = Object.keys(activatedHealthFacility); 
-           //                console.log("legend_k",legend_k);
-           //                let l= '';
-           //                legend_k.forEach((v, i) => {
-           //                  l=v;
-           //                  if(l==='Allo' || l==='Alt' || l==='CHC' || l==='PHC' ) {             
-           //                        for (var i = 0; i < categories_census.length; i++) {
-           //                            div.innerHTML +=
-           //                                labels_census.push(
-           //                                  '<i class="circle" style="background:'+ colors_census[i] +';opacity:1;">&nbsp;&nbsp;&nbsp;&nbsp;</i> ' +
-           //                                categories_census[i]+'<br>')
+                legend.update = function(){
+                    console.log("activated facility",activatedHealthFacility)
+                    legendValues = {"CHC":['CHC','#ff4800'],"PHC":['PHC','#0004ff'],"Allo":['Allopathy Hospital','#a8325a'],"Alt":['Alternate Hospital','#143d5e'],"DCH":['Dedicated COVID Hospitals','#fa4646'],"DCHC":['Dedicated Covid Health Center','#a8fc0d'],"DCCC":['Dedicated COVID Centers','#fc0de8'],"ASch":['Aided Schools','#825187'],"Gsc":['Government Schools','#00fa70'],"iti":['ITI','#f0cd07'],"bif":['Bifocals','#db0f1a']}
+                    labels = ['<strong>Legends</strong>'];
+                        for(let fac in activatedHealthFacility) {
+                            this._div.innerHTML +=
+                                labels.push(
+                                '<i class="circle" style="background:'+ legendValues[fac][1] +';opacity:1;">&nbsp;&nbsp;&nbsp;&nbsp;</i> ' +
+                                legendValues[fac][0]+'<br>')
 
 
-           //                        }
-           //                        div.innerHTML = labels_census.join('<br>');
-
-           //                        return div;}
-           //                  else if(l==='Gsc' || l==='ASch' || l==='iti' || l==='bif' )
-           //                   {
-           //                      for (var i = 0; i < categories_edu.length; i++) {
-           //                            div.innerHTML +=
-           //                                labels_edu.push(
-           //                                  '<i class="circle" style="background:'+ colors_edu[i] +';opacity:1;">&nbsp;&nbsp;&nbsp;&nbsp;</i> ' +
-           //                                categories_edu[i]+'<br>')
-
-
-           //                        }
-           //                        div.innerHTML = labels_edu.join('<br>');
-
-           //                        return div;
-
-           //                   }
-           //                  else if(l==='DCH' || l==='DCHC'|| l==='DCCC')
-           //                   {
-           //                    for (var i = 0; i < categories_covid.length; i++) {
-           //                            div.innerHTML +=
-           //                                labels_covid.push(
-           //                                  '<i class="circle" style="background:'+ colors_covid[i] +';opacity:1;">&nbsp;&nbsp;&nbsp;&nbsp;</i> ' +
-           //                                categories_covid[i]+'<br>')
-
-
-           //                        }
-           //                        div.innerHTML = labels_covid.join('<br>');
-
-           //                        return div;
-           //                   }
-           //                })
-                                  
-                          
-           //      };
+                        }
+                          this._div.innerHTML = labels.join('<br>');
+                }
 
 
 
