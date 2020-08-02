@@ -1194,12 +1194,12 @@
                 function onEachFeatureForPointBB(feature, layer) {
                         layer.bindPopup(`<div class = 'text-center'>Government School<br>
                                             Source: Census 2011<br>
-                                            Village Name: ${feature.properties.village_na}<br>
-                                            Distance Range: ${feature.properties.chc_distan}<br>
-                                            Doctors In Position :${feature.properties.chc_doc_in}<br>
-                                            Doctors Total Strength :${feature.properties.chc_doc_nu}<br>
-                                            Para Medical Staff Total Strength : ${feature.properties.chc_param_}<br>
-                                            Para Medical Staff In Position : ${feature.properties.chc_para_1}
+                                            School Name: ${feature.properties.name_of_sc}<br>
+                                            Classes Till: ${feature.properties.school_end}<br>
+                                            Taluka :${feature.properties.taluka}<br>
+                                            Village Name: ${feature.properties.village}<br>
+                                           
+                                            
                                             </div>`)
            
                 }
@@ -1254,14 +1254,14 @@ function querybufAsch(currentPos) {
 
                 function onEachFeatureForPointBB(feature, layer) {
                     
-                        layer.bindPopup(`<div class = 'text-center'>Aided Schools<br>
+                        layer.bindPopup(`<div class = 'text-center'>Aided School<br>
                                             Source: Census 2011<br>
-                                            Village Name: ${feature.properties.village_na}<br>
-                                            Distance Range: ${feature.properties.phc_distan}<br>
-                                            Doctors In Position :${feature.properties.phc_doc_in}<br>
-                                            Doctors Total Strength :${feature.properties.phc_doc_nu}<br>
-                                            Para Medical Staff Total Strength : ${feature.properties.phc_param_}<br>
-                                            Para Medical Staff In Position : ${feature.properties.phc_para_1}fen
+                                            School Name: ${feature.properties.school_nam}<br>
+                                            Classes: ${feature.properties.student_}<br>
+                                            Taluka :${feature.properties.taluka}<br>
+                                            Village Name: ${feature.properties.village}<br>
+                                           
+                                            
                                             </div>`)
                    
 
@@ -1319,13 +1319,11 @@ function querybufITI(currentPos) {
                 function onEachFeatureForPointBB(feature, layer) {
                   
                         layer.bindPopup(`<div class = 'text-center'>ITI<br>
-                                            Source: Census 2011<br>
-                                            Village Name: ${feature.properties.village_na}<br>
-                                            Distance Range: ${feature.properties.phc_distan}<br>
-                                            Doctors In Position :${feature.properties.phc_doc_in}<br>
-                                            Doctors Total Strength :${feature.properties.phc_doc_nu}<br>
-                                            Para Medical Staff Total Strength : ${feature.properties.phc_param_}<br>
-                                            Para Medical Staff In Position : ${feature.properties.phc_para_1}fen
+                                            Institute Name :${feature.properties.inst_name}<br>
+                                            Taluka: ${feature.properties.taluka}<br>
+                                            Village: ${feature.properties.village_na}<br>
+                                            Institute Category:${feature.properties.category}<br>
+                                            Address:${feature.properties.address}<br>
                                             </div>`)
                   
                 }
@@ -1381,13 +1379,11 @@ function querybufBif(currentPos) {
                 function onEachFeatureForPointBB(feature, layer) {
                     
                         layer.bindPopup(`<div class = 'text-center'>Bifocals<br>
-                                            Source: Census 2011<br>
-                                            Village Name: ${feature.properties.village_na}<br>
-                                            Distance Range: ${feature.properties.phc_distan}<br>
-                                            Doctors In Position :${feature.properties.phc_doc_in}<br>
-                                            Doctors Total Strength :${feature.properties.phc_doc_nu}<br>
-                                            Para Medical Staff Total Strength : ${feature.properties.phc_param_}<br>
-                                            Para Medical Staff In Position : ${feature.properties.phc_para_1}fen
+                                           Institute Name :${feature.properties.inst_name}<br>
+                                            Taluka: ${feature.properties.taluka}<br>
+                                            Village: ${feature.properties.area_name}<br>
+                                            Institute Category:${feature.properties.inst_ctgry}<br>
+                                            Address:${feature.properties.address}<br>
                                             </div>`)
             }
                 fetch(newurl).then(
