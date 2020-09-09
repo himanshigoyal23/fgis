@@ -482,6 +482,12 @@
                             <div class="checkbox">
                                 <label><input type="checkbox" value="{house}" onchange="getBoundaryru(this)"><span> Household Amenities</span></label>
                             </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="{vill}" onchange="getBoundaryru(this)"><span> Village Amenities</span></label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="{town}" onchange="getBoundaryru(this)"><span> Town Amenities</span></label>
+                            </div>
                            
                         
                         </div>
@@ -867,7 +873,7 @@
             function getBoundaryru(obj) {
                 let boundary = obj.value;
                 if ($(obj).is(":checked")) {
-                    if (boundary == "{mahatown}")
+                    if (boundary == "{mahatown}" || boundary == "{town}")
                         putWMSru("geonode:TownHealth0");
                     else if (boundary == "{maharural}")
                         putWMSru("geonode:maha_village_polygon_29mar");
@@ -879,6 +885,8 @@
                         putWMSru("geonode:maha_demography_with_mumbai");
                     else if (boundary == "{house}")
                         putWMSru("geonode:household");
+                    else if (boundary == "{vill}")
+                        putWMSru("geonode:VillageCensus_maharashtra_1_0");
 
                 } else {
 
@@ -2232,11 +2240,7 @@ function querybufawc(currentPos) {
 
 
             function putWMSru(layer) {
-                // var aspiD = document.getElementById('district').value;
-                // var distLayerLatLong= listDistrict[aspiD];
-                //clear_layer();
-                //console.log('kk',distLayerLatLong);
-                //let district= distLayerLatLong[0];
+               
                 if (layer == "geonode:TownHealth0") {
                     var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
                         layers: layer,
@@ -2244,6 +2248,7 @@ function querybufawc(currentPos) {
                         transparent: 'true',
                         cql_filter: "district_n='AHMADNAGAR'"
                     });
+                    TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                     //console.log(district);
 
                 } else if (layer == "geonode:india_pincodes_12june") {
@@ -2286,6 +2291,17 @@ function querybufawc(currentPos) {
                 
 
 
+                }else if (layer == "geonode:VillageCensus_maharashtra_1_0") {
+                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                        layers: layer,
+                        format: 'image/png',
+                        transparent: 'true',
+                        cql_filter: "district_n='Ahmadnagar'"
+                    });
+                    TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                
+
+
                 } else {
                     var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
                         layers: layer,
@@ -2293,6 +2309,7 @@ function querybufawc(currentPos) {
                         transparent: 'true',
                         cql_filter: "district_n='Ahmadnagar'"
                     });
+                     TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                    
                 }
                 console.log(wms_layer);
@@ -2794,6 +2811,7 @@ function querybufawc(currentPos) {
 
 
             $("#displaytable").click(function() {
+                console.log("attributetableactive",activatedHealthFacility);
                 // var name_and_icons = fetch_layer_name();
                 // if(typeof name_and_icons[1] === 'undefined'){
                 //     mymap.messagebox.show('Please select facility.');
@@ -2852,7 +2870,7 @@ function querybufawc(currentPos) {
                                             tabCell.innerHTML = propsJSON[i][col[j]];
                                         }
                                     }
-
+                                    console.log("tableact",table);
 
                                     div.appendChild(table);
 
@@ -3004,7 +3022,25 @@ function querybufawc(currentPos) {
                                     "<tr><td>% of Pit Latrine with Slab/Ventilated improved pit</td><td><b>"+ feature.properties.plat_vent+"<b></td></tr>"+    
                                     "<tr><td>% sof Bathroom without Roof</td><td><b>"+ feature.properties.nobathroom+"<b></td></tr></table>";
 
+                            }else if (feature.properties.town_name) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>Town Census 2011</b></td><td>" + feature.properties.district_n + "</td></tr>" +
+                                    "<tr><td><b>Town Name</b></td><td>" + feature.properties.town_name + "</td></tr>" +
+                                     "<tr><td>Total Population of Town</td><td><b>"+ feature.properties.tot_pop+"<b></td></tr>"+    
+                                    "<tr><td>Total Scheduled Castes Population of Town</td><td><b>"+ feature.properties.tot_sc_pop+"<b></td></tr>"+    
+                                    "<tr><td>Total Scheduled Tribes Population of Town</td><td><b>"+ feature.properties.tot_st_pop+"<b></td></tr>"+    
+                                    "<tr><td>Density (Census 2011)</td><td><b>"+ feature.properties.density_20+"<b></td></tr></table>";
+
+                            }else if (feature.properties.village_na) {
+                                insti_content = "<table class = 'popupclass' ><tr><td><b>Village Census 2011</b></td><td>" + feature.properties.district_n + "</td></tr>" +
+                                    "<tr><td><b>Area Name</b></td><td>" + feature.properties.area_name + "</td></tr>" +
+                                    "<tr><td><b>Area Type</b></td><td>" + feature.properties.area_type + "</td></tr>"+
+                                     "<tr><td>% of Untreated Tap water as Drinking water</td><td><b>"+ feature.properties.msdw_taput+"<b></td></tr>"+    
+                                    "<tr><td>% of Thratched Roof type</td><td><b>"+ feature.properties.mroof_gra+"<b></td></tr>"+    
+                                    "<tr><td>% of Pit Latrine with Slab/Ventilated improved pit</td><td><b>"+ feature.properties.plat_vent+"<b></td></tr>"+    
+                                    "<tr><td>% sof Bathroom without Roof</td><td><b>"+ feature.properties.nobathroom+"<b></td></tr></table>";
+
                             }
+
                             popup.setContent(insti_content);
                             popup.setLatLng(e.latlng);
                             mymap.openPopup(popup);
