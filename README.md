@@ -1,6 +1,1 @@
-# health_gis
-
-## Developers
-* Shweta Panwar
-* Himanshi
-* Animesh
+FGIS for CTARA
