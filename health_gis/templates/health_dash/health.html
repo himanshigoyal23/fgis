@@ -854,7 +854,7 @@
 
             function putWMStrib(layer, cql) {
                 //console.log(cql);
-                var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                     layers: layer,
                     format: 'image/png',
                     transparent: 'true',
@@ -867,7 +867,7 @@
 
 
                 wms_layer.addTo(mymap);
-                TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                TRIBLAYER = "https://communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 tribLayerList.push(wms_layer);
                 if (wms_legend) {
                     mymap.removeControl(wms_legend);
@@ -879,7 +879,7 @@
             }
 
             function addWMSLegend(layer) {
-                lagendGraphic = "https://makerghat.urbansciences.in/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer;
+                lagendGraphic = "https://communitygis.net/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + layer;
                 wms_legend = L.wmsLegend(lagendGraphic);
             }
 
@@ -1279,7 +1279,7 @@
                 let url_sc, cql_sc;
                 let keys = Object.keys(activatedHealthFacility);
                 
-                        url_sc = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:govt_schools_30april';
+                        url_sc = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:govt_schools_30april';
                         cql_sc = `district='ahmednagar'`;
                    
               
@@ -1341,7 +1341,7 @@ function querybufAsch(currentPos) {
                 let keys = Object.keys(activatedHealthFacility);
                 
                       
-                   url_sc = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:aided_schools_30april';
+                   url_sc = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:aided_schools_30april';
                         cql_sc = `district='ahmednagar'`;
                     
               
@@ -1406,7 +1406,7 @@ function querybufITI(currentPos) {
                 let url_sc, cql_sc;
                 let keys = Object.keys(activatedHealthFacility);
             
-                        url_sc = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:tot_iti_13apr2020';
+                        url_sc = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:tot_iti_13apr2020';
                         cql_sc = `district='AHMEDNAGAR'`;
                     
               
@@ -1468,7 +1468,7 @@ function querybufBif(currentPos) {
                 let url_sc, cql_sc;
                 let keys = Object.keys(activatedHealthFacility);
                
-                        url_sc = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:inst_bifocals_4may2020';
+                        url_sc = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:inst_bifocals_4may2020';
                         cql_sc = `district='Ahmednagar'`;
                
                 let bbOffset = output.innerHTML / 111;
@@ -1528,7 +1528,7 @@ function querybufjany(currentPos) {
                 let url_sc;
                 let keys = Object.keys(activatedHealthFacility);
                
-                        url_sc = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:jalyukt_shivar_ahmad';
+                        url_sc = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:jalyukt_shivar_ahmad';
                         // cql_sc = `district='Ahmednagar'`;
                
                 let bbOffset = output.innerHTML / 111;
@@ -1584,7 +1584,7 @@ function querybufawc(currentPos) {
                 let url_sc, cql_sc;
                 let keys = Object.keys(activatedHealthFacility);
                
-                        url_sc= 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:ahamadnagar_awc';
+                        url_sc= 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:ahamadnagar_awc';
                
                 let bbOffset = output.innerHTML / 111;
 
@@ -1646,7 +1646,7 @@ function querybufawc(currentPos) {
                
 
                 let query = 'chc_num>0';
-                const url = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar';
+                const url = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar';
 
                 let bbOffset = output.innerHTML / 111;
 
@@ -1711,7 +1711,7 @@ function querybufawc(currentPos) {
                
 
                 let query = 'phc_num>0';
-                const url = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar';
+                const url = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar';
 
                 let bbOffset = output.innerHTML / 111;
 
@@ -1774,7 +1774,7 @@ function querybufawc(currentPos) {
             function querybufAllo(currentPos) {
                 let keys = Object.keys(activatedHealthFacility);
                 let query = 'h_allo_tot>0';
-                const url2 = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
+                const url2 = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
 
 
                 let bbOffset = output.innerHTML / 111;
@@ -1834,7 +1834,7 @@ function querybufawc(currentPos) {
             function querybufALt(currentPos) {
                 let keys = Object.keys(activatedHealthFacility);
                 let query = 'h_alt_tot>0';
-                const url2 = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
+                const url2 = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
 
 
                 let bbOffset = output.innerHTML / 111;
@@ -2168,7 +2168,7 @@ function querybufawc(currentPos) {
                     fillOpacity: 0.7
                 };
             }
-            const domain = ['https://makerghat.urbansciences.in/', 'http://localhost/'];
+            const domain = ['https://communitygis.net/', 'http://localhost/'];
             var rootUrl = domain[0] + 'geoserver/geonode/ows';
 
             var defaultParameters = {
@@ -2262,7 +2262,7 @@ function querybufawc(currentPos) {
                 //clear_layer();
                 //console.log('kk',distLayerLatLong);
                 var wms_layer = L.tileLayer.wms(
-                    "https://makerghat.urbansciences.in/geoserver/wms", {
+                    "https://communitygis.net/geoserver/wms", {
                         layers: "geonode:maharashtra_districts",
                         format: "image/png",
                         transparent: "true",
@@ -2290,7 +2290,7 @@ function querybufawc(currentPos) {
                 //console.log(indstate);
                 var stLayerLatLong = listState[indstate];
 
-                var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                     layers: 'geonode:states_in_india',
                     format: 'image/png',
                     transparent: 'true',
@@ -2309,7 +2309,7 @@ function querybufawc(currentPos) {
             }
             //this function is for state boundary
             function putWMS(layer) {
-                var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                     layers: layer,
                     format: 'image/png',
                     transparent: 'true',
@@ -2322,17 +2322,17 @@ function querybufawc(currentPos) {
             function putWMSru(layer) {
                
                 if (layer == "geonode:TownHealth0") {
-                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                    var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
                         transparent: 'true',
                         cql_filter: "district_n='AHMADNAGAR'"
                     });
-                    TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    TRIBLAYER = "https://communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                     //console.log(district);
 
                 } else if (layer == "geonode:india_pincodes_12june") {
-                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                    var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
                         transparent: 'true',
@@ -2340,7 +2340,7 @@ function querybufawc(currentPos) {
                     });
 
                 } else if (layer == "geonode:maha_taluka_20may2020") {
-                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                    var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
                         transparent: 'true',
@@ -2350,46 +2350,46 @@ function querybufawc(currentPos) {
 
 
                 }else if (layer == "geonode:household") {
-                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                    var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
                         transparent: 'true',
                         cql_filter: "district_n='Ahmadnagar'"
                     });
-                    TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    TRIBLAYER = "https://communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 
 
 
                 }else if (layer == "geonode:maha_demography_with_mumbai") {
-                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                    var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
                         transparent: 'true',
                         cql_filter: "district_n='ahmadnagar'"
                     });
-                    TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    TRIBLAYER = "https://communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 
 
 
                 }else if (layer == "geonode:ahmadnagar_villages") {
-                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                    var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
                         transparent: 'true',
                         
                     });
-                    TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                    TRIBLAYER = "https://communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                 
 
 
                 } else {
-                    var wms_layer = L.tileLayer.wms('https://makerghat.urbansciences.in/geoserver/wms', {
+                    var wms_layer = L.tileLayer.wms('https://communitygis.net/geoserver/wms', {
                         layers: layer,
                         format: 'image/png',
                         transparent: 'true',
                         cql_filter: "district_n='Ahmadnagar'"
                     });
-                     TRIBLAYER = "https://makerghat.urbansciences.in/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
+                     TRIBLAYER = "https://communitygis.net/geoserver/geonode/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetFeatureInfo&LAYERS=" + wms_layer.options.layers + "&QUERY_LAYERS=" + wms_layer.options.layers;
                    
                 }
                 console.log(wms_layer);
@@ -2524,7 +2524,7 @@ function querybufawc(currentPos) {
             }
             
             function putKoboHealthFacity(facility) {
-                const base_url = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_hospitals_28apr';
+                const base_url = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_hospitals_28apr';
                 const url = base_url + '&propertyName=the_geom,facltyname,facltytyp,address'
                 let cql_url = url + `&cql_filter=${facility}=1`;
 
@@ -2692,14 +2692,14 @@ function querybufawc(currentPos) {
                     fillOpacity: 0.8
                 };
 
-                const url = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar';
-                const url2 = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
-                const url3 = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:aided_schools_30april';
-                const url4 = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:govt_schools_30april';
-                const url5 = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:tot_iti_13apr2020';
-                const url6 = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:inst_bifocals_4may2020';
-                const url7= 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:ahamadnagar_awc';
-                const url8= 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:jalyukt_shivar_ahmad';
+                const url = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar';
+                const url2 = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:townhealth_centroid_15apr';
+                const url3 = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:aided_schools_30april';
+                const url4 = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:govt_schools_30april';
+                const url5 = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:tot_iti_13apr2020';
+                const url6 = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:inst_bifocals_4may2020';
+                const url7= 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:ahamadnagar_awc';
+                const url8= 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:jalyukt_shivar_ahmad';
 
 
                 if (facility == 'CHC')
@@ -2926,7 +2926,7 @@ function querybufawc(currentPos) {
                     // if(layer_name[1] == undefined){
                     // mymap.messagebox.show("please select block and structure");
                     // // }else{
-                    //                 url = 'https://makerghat.urbansciences.in/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar'+`&cql_filter=chc_num>0&AND&district_n='Ahmadnagar'`;
+                    //                 url = 'https://communitygis.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&outputFormat=json&typename=geonode:maha_village_health_centroid_29mar'+`&cql_filter=chc_num>0&AND&district_n='Ahmadnagar'`;
 
 
                     console.log("table url",tableurl);
